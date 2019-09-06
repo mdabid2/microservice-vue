@@ -67,3 +67,5 @@ export const carouselItem = {
     }, this.$slots.default);
   }
 };
+
+export default carouselComponent;

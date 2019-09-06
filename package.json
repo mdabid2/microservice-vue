@@ -7,6 +7,7 @@
     "build": "vue-cli-service build",
     "build:dev": "vue-cli-service build --mode development",
     "build:micro": "vue-cli-service build --target wc --name smart-carousel",
+    "build:all":"vue-cli-service build --target wc-async --name UL 'src/components/**/*.vue'",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
