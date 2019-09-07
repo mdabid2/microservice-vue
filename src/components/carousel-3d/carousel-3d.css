@@ -1,0 +1,33 @@
+.carousel-3d-slider .carousel-3d-slide {
+  background-color: transparent;
+  border:0 none;
+}
+.carousel-3d-container figure {
+  margin:0;
+}
+
+.carousel-3d-container .o-text__heading {
+  font-size: 1.5rem;
+  display: block;
+  width:230px;
+  margin: 0 auto;
+  text-align: center;
+}
+.carousel-3d-container .o-text__heading a,
+.carousel-3d-container .o-text__heading a:focus,
+.o-text__heading a:hover {
+  text-decoration: none;
+  outline: 0 none;
+  color: #333;
+}
+
+.carousel-3d-container .btn-primary {
+  font-size: 0.96rem;
+  background-color: #f1dfdf;
+  border: 0;
+  border-radius: 5px;
+  display: block;
+  max-width: 80px;
+  margin: 10px auto;
+  padding: 10px;
+}
