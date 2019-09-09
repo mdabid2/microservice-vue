@@ -1,0 +1,19 @@
+<meta charset="utf-8">
+<title>web-components-in-vue demo</title>
+<script src="https://unpkg.com/vue"></script>
+<script src="./web-components-in-vue.umd.js"></script>
+
+<link rel="stylesheet" href="./web-components-in-vue.css">
+
+
+<div id="app">
+  <demo></demo>
+</div>
+
+<script>
+new Vue({
+  components: {
+    demo: web-components-in-vue
+  }
+}).$mount('#app')
+</script>

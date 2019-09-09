@@ -1,6 +1,6 @@
 <template>
   <div id="Carousel3d">
-      <carousel-3d :display="3" :count="slides.length" :height="550"> 
+      <carousel-3d :controls-visible="true" :controls-prev-html="'&#10092;'" :controls-next-html="'&#10093;'" :display="3" :count="slides.length" :height="550"> 
         <slide v-for="(slide, i) in slides" :index="i" :key="i">
           <figure>
             <img :src="slide.productsDetail[0].images[0].url" :alt="slide.productsDetail[0].images[0].altImage">

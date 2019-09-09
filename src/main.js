@@ -1,10 +1,22 @@
 import Vue from 'vue';
 import App from './App.vue';
-
-//Axios default basURL
-
-Vue.config.productionTip = false;
-
 new Vue({
   render: h => h(App),
 }).$mount('#smartApp')
+
+/*************************** Other Method for test *********************************/
+// import App from './components-types/RenderFunction';
+// import Strings from './components-types/Strings';
+// new Vue({
+//   render: h => h(App),
+//   Strings,
+//   components: { App }
+// }).$mount('#smartApp')
+
+// /*************************** Other Method for test *********************************/
+// //import App from './components-types/RenderFunction';
+// import Strings from './components-types/Strings';
+// new Vue({
+//   render: h => h(Strings)
+// }).$mount('#smartApp')
+
