@@ -1,6 +1,13 @@
 <template>
   <div id="Carousel3d">
-      <carousel-3d :controls-visible="true" :controls-prev-html="'&#10092;'" :controls-next-html="'&#10093;'" :display="3" :count="slides.length" :height="550"> 
+      <carousel-3d 
+        :controls-visible="[slides.length>=3?true:false]" 
+        :controls-prev-html="'&#10092;'" 
+        :controls-next-html="'&#10093;'" 
+        :display="3" 
+        :height="550"
+        v-if="slides.length" 
+      > 
         <slide v-for="(slide, i) in slides" :index="i" :key="i">
           <figure>
             <img :src="slide.productsDetail[0].images[0].url" :alt="slide.productsDetail[0].images[0].altImage">
@@ -19,20 +26,23 @@
 
 <script>
 import {Carousel3d, Slide} from 'vue-carousel-3d';
-import axios from 'axios';
 
 export default {
   name:"Carousel3d",
-  MCMID:null,
   data() {
     return{
+      MCMID: null,
       loading: true,
       errored: false,
       slides: []
     }
   },
   created() {
-    function getMcmidValue(name, key){
+    //this.MCMID = this.getMcmidValue("AMCV_128981DD59DFA4DA0A495DB2%40AdobeOrg","MCMID");
+    this.MCMID = "32414923213151592182286548544145703727";
+  },
+  computed: {
+    getMcmidValue(name, key){
       var getCookie=function(){
         var value = "; " + document.cookie;
         var parts = value.split("; " + name + "=");
@@ -43,33 +53,36 @@ export default {
       var MCMIDINDEX=MCMID.indexOf(key);
       return MCMID[MCMIDINDEX+1];
     }
-    //this.MCMID = getMcmidValue("AMCV_128981DD59DFA4DA0A495DB2%40AdobeOrg","MCMID");
-    this.MCMID = "32414923213151592182286548544145703727";
   },
   mounted() {
         const self = this;
-        axios
-        .get('http://localhost:3006/productListSections',{
-          params: {
-            mcmid: self.MCMID,
-            viewType: "Carousel3d"
+        const Path = ' http://localhost:3006/productListSections';
+        //const Path = './db-p.json';
+
+        fetch(Path, {
+          method:'get',
+          mode: 'cors', // no-cors, cors, *same-origin
+          //cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+          //credentials: 'same-origin', // include, *same-origin, omit
+          headers: {
+              'Content-Type': 'application/json'
           },
-          responseType: 'json'
+          //redirect: 'follow', // manual, *follow, error
+          //referrer: 'no-referrer', // no-referrer, *client
         })
         .then(function (response) {
           // handle success
-          self.slides = response.data[0].products;
-          // eslint-disable-next-line
-          console.log("ABID",response.data[0].products);
+          return response.json();
         })
-        .catch(error => {
-          // eslint-disable-next-line
-          console.log(error)
-          this.errored = true
+        .then(function (dataObj) {
+          self.slides = dataObj[0].products;
+          //self.slides = dataObj.productListSections[0].products;
+          //eslint-disable-next-line
+          //console.log("ABID",dataObj);
+          //eslint-disable-next-line
+          console.log("ABID",dataObj[0].products);
         })
-        .finally(() => {
-          this.loading = false; 
-        });
+        
   },
   components: {
     'carousel-3d': Carousel3d,

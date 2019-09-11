@@ -2,7 +2,7 @@ import Vue from 'vue';
 import App from './App.vue';
 new Vue({
   render: h => h(App),
-}).$mount('#smartApp')
+}).$mount('#AICarousel-3d')
 
 /*************************** Other Method for test *********************************/
 // import App from './components-types/RenderFunction';

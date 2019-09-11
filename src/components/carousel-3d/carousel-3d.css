@@ -32,7 +32,7 @@
   padding: 10px;
 }
 .carousel-3d-controls[data-v-43e93932] {
-  top: 81%;
-  left: 30%;
-  width: 40%;
+  top: 81%!important;
+  left: 30%!important;
+  width: 40%!important;
 }
